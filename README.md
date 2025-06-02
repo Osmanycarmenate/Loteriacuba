@@ -3,312 +3,519 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOTERÍA PREMIO - Administración</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Datos4GExpress - Internet Móvil de Alta Velocidad</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #6c5ce7;
-            --secondary: #a29bfe;
-            --dark: #2d3436;
-            --light: #f5f6fa;
-            --success: #00b894;
-            --danger: #d63031;
-            --warning: #fdcb6e;
-            --info: #0984e3;
+            --primary: #e53e3e;
+            --primary-dark: #c53030;
+            --secondary: #f56565;
+            --accent: #9b2c2c;
+            --light: #fef2f2;
+            --dark: #1a202c;
+            --gray: #718096;
+            --light-gray: #f8d7da;
+            --dark-gray: #4a5568;
+            --success: #38a169;
+            --border-radius: 12px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
         }
-        
+
         body {
-            background-color: #f1f3f6;
+            font-family: 'Inter', sans-serif;
+            background-color: white;
             color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
+        /* Header estilo moderno */
         header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 20px 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 0;
+            border-bottom: 2px solid var(--primary);
         }
-        
-        .header-content {
+
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .logo {
-            font-size: 24px;
-            font-weight: 700;
-        }
-        
-        .admin-nav {
             display: flex;
             align-items: center;
+            gap: 10px;
+            text-decoration: none;
         }
-        
-        .admin-nav ul {
+
+        .logo-icon {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .logo-highlight {
+            color: var(--primary);
+        }
+
+        nav ul {
             display: flex;
             list-style: none;
+            gap: 25px;
         }
-        
-        .admin-nav ul li {
-            margin-left: 20px;
-        }
-        
-        .admin-nav ul li a {
-            color: white;
+
+        nav a {
             text-decoration: none;
+            color: var(--gray);
             font-weight: 500;
-            transition: all 0.3s ease;
+            font-size: 1rem;
+            transition: var(--transition);
+            padding: 8px 0;
+            position: relative;
         }
-        
-        .admin-nav ul li a:hover {
-            opacity: 0.8;
+
+        nav a:hover {
+            color: var(--primary);
         }
-        
-        .admin-nav .user-info {
-            display: flex;
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero section estilo moderno */
+        .hero {
+            background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 60px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            color: var(--dark);
+        }
+
+        .hero-title span {
+            color: var(--primary);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-flex;
             align-items: center;
-            margin-left: 20px;
-        }
-        
-        .admin-nav .user-info img {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            margin-right: 10px;
-            object-fit: cover;
-        }
-        
-        .btn {
-            padding: 8px 16px;
-            border-radius: 4px;
+            justify-content: center;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
             border: none;
             cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            gap: 8px;
         }
-        
-        .btn-primary {
-            background-color: white;
-            color: var(--primary);
-        }
-        
-        .btn-outline {
-            background-color: transparent;
-            color: white;
-            border: 1px solid white;
-        }
-        
-        .btn:hover {
+
+        .cta-button:hover {
+            background-color: var(--primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow-lg);
         }
-        
-        .admin-content {
-            display: flex;
-            margin-top: 30px;
-        }
-        
-        .sidebar {
-            width: 250px;
+
+        .cta-button.secondary {
             background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            padding: 20px;
-            margin-right: 20px;
+            color: var(--primary);
+            border: 1px solid var(--light-gray);
         }
-        
-        .sidebar-menu {
-            list-style: none;
+
+        .cta-button.secondary:hover {
+            background-color: #fef2f2;
+            border-color: var(--primary);
         }
-        
-        .sidebar-menu li {
-            margin-bottom: 10px;
+
+        /* Sección de paquetes */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
         }
-        
-        .sidebar-menu a {
-            display: block;
-            padding: 10px;
+
+        .section-title h2 {
+            font-size: 2rem;
+            font-weight: 700;
             color: var(--dark);
-            text-decoration: none;
-            border-radius: 5px;
-            transition: all 0.3s ease;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
         }
-        
-        .sidebar-menu a:hover, .sidebar-menu a.active {
-            background-color: var(--secondary);
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .packages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .package-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+            transition: var(--transition);
+            border: 1px solid var(--light-gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .package-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .package-card.popular {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 1px var(--primary), var(--shadow-lg);
+        }
+
+        .package-card.popular::before {
+            content: 'MÁS POPULAR';
+            position: absolute;
+            top: 15px;
+            right: -35px;
+            background-color: var(--primary);
             color: white;
-        }
-        
-        .sidebar-menu i {
-            margin-right: 10px;
-            width: 20px;
+            padding: 4px 35px;
+            transform: rotate(45deg);
+            font-size: 0.75rem;
+            font-weight: 600;
+            width: 150px;
             text-align: center;
         }
-        
-        .main-content {
-            flex: 1;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            padding: 30px;
-        }
-        
-        .section-title {
-            font-size: 24px;
+
+        .package-header {
             margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .package-icon {
+            font-size: 2.5rem;
             color: var(--primary);
         }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .stat-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            text-align: center;
-        }
-        
-        .stat-card i {
-            font-size: 30px;
-            margin-bottom: 10px;
-        }
-        
-        .stat-card .value {
-            font-size: 24px;
+
+        .package-title {
+            font-size: 1.5rem;
             font-weight: 700;
+            color: var(--dark);
             margin-bottom: 5px;
         }
-        
-        .stat-card .label {
-            color: #666;
-            font-size: 14px;
+
+        .package-features {
+            list-style: none;
+            margin: 25px 0;
         }
-        
-        .stat-card.primary {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
+
+        .package-features li {
+            padding: 10px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.95rem;
+            color: var(--dark-gray);
+            border-bottom: 1px solid var(--light-gray);
         }
-        
-        .stat-card.primary .label {
-            color: rgba(255, 255, 255, 0.8);
+
+        .package-features li i {
+            color: var(--success);
+            font-size: 1rem;
+            margin-top: 3px;
         }
-        
-        .stat-card.success {
-            background-color: var(--success);
-            color: white;
+
+        .price-container {
+            margin: 25px 0;
         }
-        
-        .stat-card.success .label {
-            color: rgba(255, 255, 255, 0.8);
+
+        .original-price {
+            text-decoration: line-through;
+            color: var(--gray);
+            font-size: 0.9rem;
         }
-        
-        .stat-card.warning {
-            background-color: var(--warning);
-            color: var(--dark);
+
+        .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 5px 0;
         }
-        
-        .stat-card.danger {
-            background-color: var(--danger);
-            color: white;
+
+        .price-info {
+            color: var(--gray);
+            font-size: 0.9rem;
         }
-        
-        .stat-card.danger .label {
-            color: rgba(255, 255, 255, 0.8);
-        }
-        
-        .table-responsive {
-            overflow-x: auto;
-        }
-        
-        table {
+
+        .buy-button {
+            display: flex;
             width: 100%;
-            border-collapse: collapse;
-        }
-        
-        th, td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #eee;
-        }
-        
-        th {
-            background-color: #f8f9fa;
-            font-weight: 600;
-            color: var(--dark);
-        }
-        
-        tr:hover {
-            background-color: #f8f9fa;
-        }
-        
-        .status {
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 12px;
-            text-align: center;
-        }
-        
-        .status.pending {
-            background-color: var(--warning);
-            color: var(--dark);
-        }
-        
-        .status.confirmed {
-            background-color: var(--success);
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary);
             color: white;
-        }
-        
-        .status.rejected {
-            background-color: var(--danger);
-            color: white;
-        }
-        
-        .action-btn {
-            padding: 5px 10px;
-            border-radius: 4px;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
             border: none;
             cursor: pointer;
-            font-size: 12px;
-            transition: all 0.3s ease;
+            gap: 8px;
         }
-        
-        .action-btn.confirm {
-            background-color: var(--success);
+
+        .buy-button:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Sección de beneficios */
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .benefit-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition);
+            border-top: 3px solid var(--primary);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .benefit-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .benefit-description {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* Footer estilo moderno */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            text-decoration: none;
+        }
+
+        .footer-logo-icon {
+            font-size: 1.8rem;
             color: white;
         }
-        
-        .action-btn.reject {
-            background-color: var(--danger);
+
+        .footer-logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
             color: white;
-            margin-left: 5px;
         }
-        
-        .action-btn:hover {
-            opacity: 0.8;
+
+        .footer-about {
+            max-width: 300px;
         }
-        
+
+        .footer-about p {
+            color: var(--light-gray);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-contact h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-contact p {
+            color: var(--light-gray);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .footer-contact i {
+            margin-top: 3px;
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--dark-gray);
+            padding-top: 30px;
+            text-align: center;
+        }
+
+        .copyright {
+            color: var(--light-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Modal de pago moderno */
         .modal {
             display: none;
             position: fixed;
@@ -320,680 +527,531 @@
             z-index: 1000;
             justify-content: center;
             align-items: center;
+            padding: 20px;
         }
-        
+
         .modal-content {
             background-color: white;
-            border-radius: 10px;
+            border-radius: var(--border-radius);
             padding: 30px;
-            max-width: 600px;
-            width: 90%;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 450px;
+            box-shadow: var(--shadow-lg);
             position: relative;
-            max-height: 90vh;
-            overflow-y: auto;
+            animation: modalFadeIn 0.3s ease-out;
+            border-top: 4px solid var(--primary);
         }
-        
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .close-modal {
             position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 24px;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
             cursor: pointer;
-            color: var(--dark);
+            color: var(--gray);
+            transition: var(--transition);
+            background: none;
+            border: none;
         }
-        
+
+        .close-modal:hover {
+            color: var(--primary);
+        }
+
         .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
             margin-bottom: 20px;
-            color: var(--primary);
+            color: var(--dark);
+            text-align: center;
         }
-        
-        .ticket-details div {
-            margin-bottom: 15px;
-        }
-        
-        .ticket-details span {
-            font-weight: 600;
-        }
-        
-        .receipt-img {
-            max-width: 100%;
-            border-radius: 5px;
-            margin-top: 15px;
-        }
-        
-        .user-info-modal {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-        }
-        
-        .user-info-modal h4 {
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-        
-        .modal-actions {
-            display: flex;
-            justify-content: flex-end;
-            margin-top: 20px;
-        }
-        
-        .modal-actions button {
-            margin-left: 10px;
-        }
-        
-        .search-filter {
-            display: flex;
-            justify-content: space-between;
+
+        .ticket-form {
             margin-bottom: 20px;
         }
-        
-        .search-box {
-            position: relative;
-            width: 300px;
+
+        .form-group {
+            margin-bottom: 15px;
         }
-        
-        .search-box input {
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+
+        .form-group input {
             width: 100%;
-            padding: 10px 15px 10px 40px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 14px;
+            padding: 12px;
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
         }
-        
-        .search-box i {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #666;
+
+        .form-group input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.1);
         }
-        
-        .filter-select {
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 14px;
+
+        .payment-info {
+            background-color: #fef2f2;
+            border-radius: var(--border-radius);
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 0.9rem;
+            border-left: 3px solid var(--primary);
         }
-        
-        .pagination {
+
+        .payment-info p {
+            margin-bottom: 8px;
+            color: var(--dark-gray);
+        }
+
+        .info-highlight {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .email-button {
             display: flex;
+            width: 100%;
+            align-items: center;
             justify-content: center;
-            margin-top: 20px;
-        }
-        
-        .pagination button {
-            padding: 8px 12px;
-            margin: 0 5px;
-            border: 1px solid #ddd;
-            background-color: white;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-        
-        .pagination button.active {
             background-color: var(--primary);
             color: white;
-            border-color: var(--primary);
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            margin-top: 15px;
+            cursor: pointer;
+            border: none;
+            gap: 8px;
         }
-        
-        .pagination button:hover:not(.active) {
-            background-color: #f8f9fa;
+
+        .email-button:hover {
+            background-color: var(--primary-dark);
         }
-        
-        @media (max-width: 992px) {
-            .admin-content {
-                flex-direction: column;
-            }
-            
-            .sidebar {
-                width: 100%;
-                margin-right: 0;
-                margin-bottom: 20px;
-            }
-            
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+
+        .ticket-confirmation {
+            display: none;
+            text-align: center;
+            padding: 20px;
         }
-        
+
+        .ticket-confirmation i {
+            font-size: 3rem;
+            color: var(--success);
+            margin-bottom: 15px;
+        }
+
+        .ticket-confirmation h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .ticket-confirmation p {
+            margin-bottom: 8px;
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* Responsive design */
         @media (max-width: 768px) {
-            .stats-grid {
+            .header-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .packages {
                 grid-template-columns: 1fr;
             }
-            
-            .header-content {
-                flex-direction: column;
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 60px 0;
             }
-            
-            .admin-nav {
-                margin-top: 15px;
-                width: 100%;
-                justify-content: space-between;
+
+            .hero-title {
+                font-size: 1.8rem;
             }
-            
-            .search-box {
-                width: 100%;
-                margin-bottom: 15px;
+
+            .package-card.popular::before {
+                right: -45px;
+                padding: 4px 45px;
+                width: 180px;
+                font-size: 0.7rem;
             }
-            
-            .search-filter {
-                flex-direction: column;
+
+            .modal-content {
+                padding: 20px;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="container header-content">
-            <div class="logo">LOTERÍA PREMIO - ADMIN</div>
-            <div class="admin-nav">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-bolt logo-icon"></i>
+                <span class="logo-text">Datos<span class="logo-highlight">4G</span>Express</span>
+            </a>
+            <nav>
                 <ul>
-                    <li><a href="#"><i class="fas fa-home"></i> Inicio</a></li>
-                    <li><a href="#"><i class="fas fa-cog"></i> Configuración</a></li>
+                    <li><a href="#paquetes">Paquetes</a></li>
+                    <li><a href="#beneficios">Beneficios</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
                 </ul>
-                <div class="user-info">
-                    <img src="https://via.placeholder.com/150" alt="Admin" id="adminPhoto">
-                    <span id="adminName">Administrador</span>
-                </div>
-            </div>
+            </nav>
         </div>
     </header>
 
-    <div class="container admin-content">
-        <aside class="sidebar">
-            <ul class="sidebar-menu">
-                <li><a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-                <li><a href="#"><i class="fas fa-ticket-alt"></i> Tickets</a></li>
-                <li><a href="#"><i class="fas fa-users"></i> Usuarios</a></li>
-                <li><a href="#"><i class="fas fa-chart-bar"></i> Reportes</a></li>
-                <li><a href="#"><i class="fas fa-gift"></i> Premios</a></li>
-                <li><a href="#"><i class="fas fa-money-bill-wave"></i> Pagos</a></li>
-                <li><a href="#"><i class="fas fa-bell"></i> Notificaciones</a></li>
-                <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
-            </ul>
-        </aside>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Internet móvil de <span>alta velocidad</span></h1>
+                <p class="hero-subtitle">Los mejores paquetes de datos 4G/3G/2G con cobertura nacional y soporte técnico avanzado</p>
+                <div style="display: flex; gap: 15px; justify-content: center;">
+                    <a href="#paquetes" class="cta-button">Ver paquetes</a>
+                    <a href="#contacto" class="cta-button secondary">Contactar soporte</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <main class="main-content">
-            <h2 class="section-title">Panel de Administración</h2>
-            
-            <div class="stats-grid">
-                <div class="stat-card primary">
-                    <i class="fas fa-ticket-alt"></i>
-                    <div class="value" id="totalTickets">0</div>
-                    <div class="label">Tickets Totales</div>
+    <section id="paquetes" class="container">
+        <div class="section-title">
+            <h2>Paquetes de datos móviles</h2>
+            <p>Elige el paquete que mejor se adapte a tus necesidades de conexión</p>
+        </div>
+        
+        <div class="packages">
+            <div class="package-card">
+                <div class="package-header">
+                    <div>
+                        <h3 class="package-title">Básico</h3>
+                        <p style="color: var(--gray); font-size: 0.9rem;">Ideal para uso ocasional</p>
+                    </div>
+                    <i class="fas fa-mobile-alt package-icon"></i>
                 </div>
-                <div class="stat-card success">
-                    <i class="fas fa-check-circle"></i>
-                    <div class="value" id="confirmedTickets">0</div>
-                    <div class="label">Confirmados</div>
+                <ul class="package-features">
+                    <li><i class="fas fa-check"></i> 2 GB de datos + 15 min + 20 SMS</li>
+                    <li><i class="fas fa-check"></i> Velocidad máxima de 10 Mbps</li>
+                    <li><i class="fas fa-check"></i> Todo en tus manos</li>
+                    <li><i class="fas fa-check"></i> Soporte técnico 24/7</li>
+                </ul>
+                <div class="price-container">
+                    <div class="original-price">Precio normal: 500 CUP</div>
+                    <div class="price">500 CUP</div>
+                    <div class="price-info">Precio especial de lanzamiento</div>
                 </div>
-                <div class="stat-card warning">
-                    <i class="fas fa-clock"></i>
-                    <div class="value" id="pendingTickets">0</div>
-                    <div class="label">Pendientes</div>
-                </div>
-                <div class="stat-card danger">
-                    <i class="fas fa-times-circle"></i>
-                    <div class="value" id="rejectedTickets">0</div>
-                    <div class="label">Rechazados</div>
-                </div>
+                <button class="buy-button" onclick="openPaymentModal('Paquete Básico', 500)">
+                    <i class="fas fa-shopping-cart"></i> Comprar ahora
+                </button>
             </div>
-            
-            <div class="search-filter">
-                <div class="search-box">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="searchInput" placeholder="Buscar tickets...">
-                </div>
-                <select class="filter-select" id="statusFilter">
-                    <option value="all">Todos los estados</option>
-                    <option value="pending">Pendientes</option>
-                    <option value="confirmed">Confirmados</option>
-                    <option value="rejected">Rechazados</option>
-                </select>
-            </div>
-            
-            <div class="table-responsive">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Usuario</th>
-                            <th>Números</th>
-                            <th>Monto</th>
-                            <th>Fecha</th>
-                            <th>Estado</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="ticketsTable">
-                        <!-- Tickets will be loaded by JavaScript -->
-                    </tbody>
-                </table>
-            </div>
-            
-            <div class="pagination">
-                <button id="prevPage"><i class="fas fa-chevron-left"></i></button>
-                <button class="active">1</button>
-                <button>2</button>
-                <button>3</button>
-                <button id="nextPage"><i class="fas fa-chevron-right"></i></button>
-            </div>
-        </main>
-    </div>
 
-    <!-- Ticket Detail Modal -->
-    <div class="modal" id="ticketModal">
+            <div class="package-card popular">
+                <div class="package-header">
+                    <div>
+                        <h3 class="package-title">Estándar</h3>
+                        <p style="color: var(--gray); font-size: 0.9rem;">El más popular</p>
+                    </div>
+                    <i class="fas fa-rocket package-icon"></i>
+                </div>
+                <ul class="package-features">
+                    <li><i class="fas fa-check"></i> 4 GB de datos + 35 min + 40 SMS</li>
+                    <li><i class="fas fa-check"></i> Velocidad máxima de 20 Mbps</li>
+                    <li><i class="fas fa-check"></i> Tu mejor oferta</li>
+                    <li><i class="fas fa-check"></i> Soporte técnico 24/7</li>
+                    <li><i class="fas fa-check"></i> Conectado con el mundo</li>
+                </ul>
+                <div class="price-container">
+                    <div class="original-price">Precio normal: 1250 CUP</div>
+                    <div class="price">1250 CUP</div>
+                    <div class="price-info">Depositar la cantidad exacta</div>
+                </div>
+                <button class="buy-button" onclick="openPaymentModal('Paquete Estándar', 1250)">
+                    <i class="fas fa-shopping-cart"></i> Comprar ahora
+                </button>
+            </div>
+
+            <div class="package-card">
+                <div class="package-header">
+                    <div>
+                        <h3 class="package-title">Premium</h3>
+                        <p style="color: var(--gray); font-size: 0.9rem;">Para usuarios intensivos</p>
+                    </div>
+                    <i class="fas fa-crown package-icon"></i>
+                </div>
+                <ul class="package-features">
+                    <li><i class="fas fa-check"></i> 6 GB de datos + 60 min + 70 SMS</li>
+                    <li><i class="fas fa-check"></i> Velocidad máxima garantizada</li>
+                    <li><i class="fas fa-check"></i> Válido por 30 días</li>
+                    <li><i class="fas fa-check"></i> Soporte técnico 24/7</li>
+                    <li><i class="fas fa-check"></i> Conexión fácil y segura</li>
+                    <li><i class="fas fa-check"></i> 60 min de llamadas</li>
+                </ul>
+                <div class="price-container">
+                    <div class="original-price">Precio normal: 2000 CUP</div>
+                    <div class="price">2000 CUP</div>
+                    <div class="price-info">Compra por transferencia</div>
+                </div>
+                <button class="buy-button" onclick="openPaymentModal('Paquete Premium', 2000)">
+                    <i class="fas fa-shopping-cart"></i> Comprar ahora
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="beneficios" class="container">
+        <div class="section-title">
+            <h2>Beneficios exclusivos</h2>
+            <p>Descubre todo lo que ofrecemos además de nuestros paquetes de datos</p>
+        </div>
+        
+        <div class="benefits">
+            <div class="benefit-card">
+                <i class="fas fa-tachometer-alt benefit-icon"></i>
+                <h3 class="benefit-title">Velocidad garantizada</h3>
+                <p class="benefit-description">Disfruta de conexiones ultrarrápidas con nuestra red 4G de última generación.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <i class="fas fa-globe-americas benefit-icon"></i>
+                <h3 class="benefit-title">Cobertura nacional</h3>
+                <p class="benefit-description">Conéctate en cualquier parte del país con nuestra amplia cobertura.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <i class="fas fa-headset benefit-icon"></i>
+                <h3 class="benefit-title">Soporte 24/7</h3>
+                <p class="benefit-description">Nuestro equipo de soporte está disponible en todo momento para ayudarte.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <i class="fas fa-shield-alt benefit-icon"></i>
+                <h3 class="benefit-title">Seguridad avanzada</h3>
+                <p class="benefit-description">Tus datos siempre protegidos con nuestros protocolos de seguridad.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <a href="#" class="footer-logo">
+                        <i class="fas fa-bolt footer-logo-icon"></i>
+                        <span class="footer-logo-text">Datos4GExpress</span>
+                    </a>
+                    <p>Ofreciendo los mejores paquetes de datos 4G con tecnología de punta y servicio premium.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Enlaces rápidos</h3>
+                    <ul>
+                        <li><a href="#paquetes">Paquetes</a></li>
+                        <li><a href="#beneficios">Beneficios</a></li>
+                        <li><a href="#">Preguntas frecuentes</a></li>
+                        <li><a href="#">Términos y condiciones</a></li>
+                        <li><a href="#">Política de privacidad</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contacto</h3>
+                    <p><i class="fas fa-envelope"></i> info@datos4gexpress.com</p>
+                    <p><i class="fas fa-phone-alt"></i> +53 555 1234</p>
+                    <p><i class="fas fa-clock"></i> Lunes a Viernes: 8:00 AM - 6:00 PM</p>
+                    <p><i class="fas fa-map-marker-alt"></i> La Habana, Cuba</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2023 Datos4GExpress. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de pago moderno -->
+    <div id="paymentModal" class="modal">
         <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h3 class="modal-title">Detalle del Ticket <span id="modalTicketId"></span></h3>
+            <button class="close-modal" onclick="closePaymentModal()">&times;</button>
+            <h2 class="modal-title">Completar compra</h2>
             
-            <div class="ticket-details">
-                <div>
-                    <span>Números jugados:</span> <span id="modalNumbers"></span>
+            <div class="ticket-form">
+                <div class="form-group">
+                    <label for="customer-name">Nombre completo</label>
+                    <input type="text" id="customer-name" placeholder="Ingresa tu nombre completo">
                 </div>
-                <div>
-                    <span>Apuesta por número:</span> $<span id="modalBetPerNumber"></span>
+                
+                <div class="form-group">
+                    <label for="customer-phone">Teléfono</label>
+                    <input type="tel" id="customer-phone" placeholder="Tu número de teléfono">
                 </div>
-                <div>
-                    <span>Apuesta total:</span> $<span id="modalTotalBet"></span>
-                </div>
-                <div>
-                    <span>Fecha:</span> <span id="modalDate"></span>
-                </div>
-                <div>
-                    <span>Estado:</span> <span class="status" id="modalStatus"></span>
-                </div>
-                <div>
-                    <span>Comprobante:</span>
-                    <img id="modalReceipt" class="receipt-img" alt="Comprobante de pago">
+                
+                <div class="form-group">
+                    <label for="transfer-number">Número de transferencia</label>
+                    <input type="text" id="transfer-number" placeholder="Número de transferencia bancaria">
                 </div>
             </div>
             
-            <div class="user-info-modal">
-                <h4>Información del Usuario</h4>
-                <div>
-                    <span>Nombre:</span> <span id="modalUserName"></span>
-                </div>
-                <div>
-                    <span>Email:</span> <span id="modalUserEmail"></span>
-                </div>
-                <div>
-                    <span>Teléfono:</span> <span id="modalUserPhone"></span>
-                </div>
+            <div class="payment-info">
+                <p><strong>Paquete seleccionado:</strong> <span id="package-name" class="info-highlight"></span></p>
+                <p><strong>Precio total:</strong> <span id="package-price" class="info-highlight"></span> CUP</p>
+                <p><strong>Transferir a:</strong> <span class="info-highlight">Tarjeta 93939388338</span></p>
+                <p><strong>Confirmar pago al:</strong> <span class="info-highlight">63868677</span></p>
+                <p><strong>Enviar comprobante a:</strong> <span class="info-highlight">ocarmenate429@gmail.com</span></p>
             </div>
             
-            <div class="modal-actions" id="modalActions">
-                <button class="btn action-btn confirm" id="confirmTicket">Confirmar</button>
-                <button class="btn action-btn reject" id="rejectTicket">Rechazar</button>
+            <button id="createTicketBtn" class="email-button" onclick="createTicket()">
+                <i class="fas fa-paper-plane"></i> Enviar solicitud
+            </button>
+            
+            <div id="ticketConfirmation" class="ticket-confirmation">
+                <i class="fas fa-check-circle"></i>
+                <h3>¡Solicitud enviada!</h3>
+                <p>Tu pedido ha sido procesado correctamente.</p>
+                <p>Recibirás confirmación en breve.</p>
             </div>
         </div>
     </div>
 
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-    
     <script>
-        // Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyBi19o_saTQEXMUJ3cSGyhv5oq21X1O4Sg",
-            authDomain: "rifa-8e8da.firebaseapp.com",
-            databaseURL: "https://rifa-8e8da-default-rtdb.firebaseio.com",
-            projectId: "rifa-8e8da",
-            storageBucket: "rifa-8e8da.appspot.com",
-            messagingSenderId: "1037499089060",
-            appId: "1:1037499089060:web:14826080ba499ca863a631"
-        };
-
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth();
-        const database = firebase.database();
-        const storage = firebase.storage();
-
-        // DOM Elements
-        const logoutBtn = document.getElementById('logoutBtn');
-        const adminPhoto = document.getElementById('adminPhoto');
-        const adminName = document.getElementById('adminName');
-        const totalTickets = document.getElementById('totalTickets');
-        const confirmedTickets = document.getElementById('confirmedTickets');
-        const pendingTickets = document.getElementById('pendingTickets');
-        const rejectedTickets = document.getElementById('rejectedTickets');
-        const searchInput = document.getElementById('searchInput');
-        const statusFilter = document.getElementById('statusFilter');
-        const ticketsTable = document.getElementById('ticketsTable');
-        const prevPage = document.getElementById('prevPage');
-        const nextPage = document.getElementById('nextPage');
-        const ticketModal = document.getElementById('ticketModal');
-        const closeModalButtons = document.querySelectorAll('.close-modal');
-        const modalTicketId = document.getElementById('modalTicketId');
-        const modalNumbers = document.getElementById('modalNumbers');
-        const modalBetPerNumber = document.getElementById('modalBetPerNumber');
-        const modalTotalBet = document.getElementById('modalTotalBet');
-        const modalDate = document.getElementById('modalDate');
-        const modalStatus = document.getElementById('modalStatus');
-        const modalReceipt = document.getElementById('modalReceipt');
-        const modalUserName = document.getElementById('modalUserName');
-        const modalUserEmail = document.getElementById('modalUserEmail');
-        const modalUserPhone = document.getElementById('modalUserPhone');
-        const modalActions = document.getElementById('modalActions');
-        const confirmTicket = document.getElementById('confirmTicket');
-        const rejectTicket = document.getElementById('rejectTicket');
-
-        // App state
-        let currentUser = null;
-        let tickets = [];
-        let filteredTickets = [];
-        let currentTicket = null;
-        let currentPage = 1;
-        const ticketsPerPage = 10;
-
-        // Initialize app
-        function init() {
-            setupAuth();
-            setupEventListeners();
-            loadTickets();
+        // Funciones para el modal de pago
+        function openPaymentModal(packageName, packagePrice) {
+            const modal = document.getElementById('paymentModal');
+            const packageNameElement = document.getElementById('package-name');
+            const packagePriceElement = document.getElementById('package-price');
+            
+            packageNameElement.textContent = packageName;
+            packagePriceElement.textContent = packagePrice.toFixed(0);
+            
+            // Reiniciar el formulario
+            document.getElementById('customer-name').value = '';
+            document.getElementById('customer-phone').value = '';
+            document.getElementById('transfer-number').value = '';
+            
+            // Mostrar formulario y ocultar confirmación
+            document.querySelector('.ticket-form').style.display = 'block';
+            document.querySelector('.payment-info').style.display = 'block';
+            document.getElementById('createTicketBtn').style.display = 'flex';
+            document.getElementById('ticketConfirmation').style.display = 'none';
+            
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         }
-
-        // Setup authentication
-        function setupAuth() {
-            auth.onAuthStateChanged((user) => {
-                if (user) {
-                    currentUser = user;
-                    updateAdminInfo(user);
-                } else {
-                    window.location.href = 'index.html';
-                }
-            });
-            
-            logoutBtn.addEventListener('click', () => {
-                auth.signOut();
-            });
+        
+        function closePaymentModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
         }
-
-        // Update admin info
-        function updateAdminInfo(user) {
-            adminName.textContent = user.email;
+        
+        // Función para crear y enviar el ticket
+        function createTicket() {
+            const name = document.getElementById('customer-name').value;
+            const phone = document.getElementById('customer-phone').value;
+            const transfer = document.getElementById('transfer-number').value;
+            const packageName = document.getElementById('package-name').textContent;
+            const packagePrice = document.getElementById('package-price').textContent;
             
-            // Load additional admin data from database
-            database.ref('admins/' + user.uid).once('value')
-                .then((snapshot) => {
-                    const adminData = snapshot.val();
-                    if (adminData) {
-                        if (adminData.name) adminName.textContent = adminData.name;
-                        if (adminData.photoUrl) adminPhoto.src = adminData.photoUrl;
-                    }
-                });
-        }
-
-        // Setup event listeners
-        function setupEventListeners() {
-            // Search and filter
-            searchInput.addEventListener('input', filterTickets);
-            statusFilter.addEventListener('change', filterTickets);
-            
-            // Pagination
-            prevPage.addEventListener('click', () => {
-                if (currentPage > 1) {
-                    currentPage--;
-                    renderTickets();
-                }
-            });
-            
-            nextPage.addEventListener('click', () => {
-                if (currentPage < Math.ceil(filteredTickets.length / ticketsPerPage)) {
-                    currentPage++;
-                    renderTickets();
-                }
-            });
-            
-            // Modal
-            closeModalButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    ticketModal.style.display = 'none';
-                });
-            });
-            
-            window.addEventListener('click', (e) => {
-                if (e.target === ticketModal) {
-                    ticketModal.style.display = 'none';
-                }
-            });
-            
-            // Ticket actions
-            confirmTicket.addEventListener('click', () => {
-                if (currentTicket) {
-                    updateTicketStatus(currentTicket.id, 'confirmed');
-                }
-            });
-            
-            rejectTicket.addEventListener('click', () => {
-                if (currentTicket) {
-                    updateTicketStatus(currentTicket.id, 'rejected');
-                }
-            });
-        }
-
-        // Load tickets from database
-        function loadTickets() {
-            database.ref('tickets').on('value', (snapshot) => {
-                tickets = [];
-                snapshot.forEach((childSnapshot) => {
-                    const ticket = childSnapshot.val();
-                    ticket.id = childSnapshot.key;
-                    tickets.push(ticket);
-                });
-                
-                // Sort by date (newest first)
-                tickets.sort((a, b) => b.date - a.date);
-                
-                filterTickets();
-                updateStats();
-            });
-        }
-
-        // Filter tickets based on search and status
-        function filterTickets() {
-            const searchTerm = searchInput.value.toLowerCase();
-            const status = statusFilter.value;
-            
-            filteredTickets = tickets.filter(ticket => {
-                const matchesSearch = ticket.id.toLowerCase().includes(searchTerm) || 
-                                     (ticket.userId && ticket.userId.toLowerCase().includes(searchTerm)) ||
-                                     ticket.numbers.join(', ').toLowerCase().includes(searchTerm);
-                
-                const matchesStatus = status === 'all' || ticket.status === status;
-                
-                return matchesSearch && matchesStatus;
-            });
-            
-            currentPage = 1;
-            renderTickets();
-        }
-
-        // Render tickets to the table
-        function renderTickets() {
-            ticketsTable.innerHTML = '';
-            
-            const startIndex = (currentPage - 1) * ticketsPerPage;
-            const endIndex = Math.min(startIndex + ticketsPerPage, filteredTickets.length);
-            
-            for (let i = startIndex; i < endIndex; i++) {
-                const ticket = filteredTickets[i];
-                const row = document.createElement('tr');
-                
-                // Format date
-                const date = new Date(ticket.date);
-                const dateStr = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
-                
-                // Get status class
-                let statusClass = '';
-                if (ticket.status === 'pending') statusClass = 'pending';
-                if (ticket.status === 'confirmed') statusClass = 'confirmed';
-                if (ticket.status === 'rejected') statusClass = 'rejected';
-                
-                row.innerHTML = `
-                    <td>${ticket.id}</td>
-                    <td>${ticket.userId || 'N/A'}</td>
-                    <td>${ticket.numbers.join(', ')}</td>
-                    <td>$${ticket.totalBet}</td>
-                    <td>${dateStr}</td>
-                    <td><span class="status ${statusClass}">${ticket.status.toUpperCase()}</span></td>
-                    <td>
-                        <button class="action-btn view-btn" data-id="${ticket.id}">Ver</button>
-                    </td>
-                `;
-                
-                ticketsTable.appendChild(row);
+            // Validar campos
+            if (!name || !phone || !transfer) {
+                alert('Por favor complete todos los campos');
+                return;
             }
             
-            // Add event listeners to view buttons
-            document.querySelectorAll('.view-btn').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const ticketId = e.target.getAttribute('data-id');
-                    showTicketDetails(ticketId);
-                });
-            });
+            // Crear el mensaje del ticket
+            const subject = `Solicitud de compra: ${packageName}`;
+            const body = `Detalles de la compra:\n\n` +
+                          `- Nombre: ${name}\n` +
+                          `- Teléfono: ${phone}\n` +
+                          `- Paquete: ${packageName}\n` +
+                          `- Precio: ${packagePrice} CUP\n` +
+                          `- Número de transferencia: ${transfer}\n\n` +
+                          `He realizado el pago a la tarjeta 93939388338 y confirmaré la transacción al 63868677.\n\n` +
+                          `Por favor activar mi paquete lo antes posible.`;
             
-            // Update pagination buttons
-            updatePagination();
+            // Crear enlace de correo
+            const mailtoLink = `mailto:ocarmenate429@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // Abrir cliente de correo
+            window.open(mailtoLink, '_blank');
+            
+            // Mostrar mensaje de confirmación
+            document.querySelector('.ticket-form').style.display = 'none';
+            document.querySelector('.payment-info').style.display = 'none';
+            document.getElementById('createTicketBtn').style.display = 'none';
+            document.getElementById('ticketConfirmation').style.display = 'block';
+            
+            // Cerrar automáticamente después de 3 segundos
+            setTimeout(closePaymentModal, 3000);
         }
-
-        // Update pagination buttons
-        function updatePagination() {
-            const totalPages = Math.ceil(filteredTickets.length / ticketsPerPage);
-            const paginationContainer = document.querySelector('.pagination');
-            
-            // Clear existing buttons (except prev/next)
-            paginationContainer.innerHTML = `
-                <button id="prevPage"><i class="fas fa-chevron-left"></i></button>
-                ${Array.from({length: totalPages}, (_, i) => 
-                    `<button class="${i + 1 === currentPage ? 'active' : ''}">${i + 1}</button>`
-                ).join('')}
-                <button id="nextPage"><i class="fas fa-chevron-right"></i></button>
-            `;
-            
-            // Re-attach event listeners
-            document.getElementById('prevPage').addEventListener('click', () => {
-                if (currentPage > 1) {
-                    currentPage--;
-                    renderTickets();
-                }
-            });
-            
-            document.getElementById('nextPage').addEventListener('click', () => {
-                if (currentPage < totalPages) {
-                    currentPage++;
-                    renderTickets();
-                }
-            });
-            
-            // Add event listeners to page buttons
-            document.querySelectorAll('.pagination button:not(#prevPage):not(#nextPage)').forEach((button, index) => {
-                button.addEventListener('click', () => {
-                    currentPage = index + 1;
-                    renderTickets();
-                });
-            });
-        }
-
-        // Show ticket details in modal
-        function showTicketDetails(ticketId) {
-            const ticket = tickets.find(t => t.id === ticketId);
-            if (!ticket) return;
-            
-            currentTicket = ticket;
-            
-            // Format date
-            const date = new Date(ticket.date);
-            const dateStr = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
-            
-            // Update modal content
-            modalTicketId.textContent = ticket.id;
-            modalNumbers.textContent = ticket.numbers.join(', ');
-            modalBetPerNumber.textContent = ticket.betPerNumber;
-            modalTotalBet.textContent = ticket.totalBet;
-            modalDate.textContent = dateStr;
-            
-            // Set status
-            modalStatus.textContent = ticket.status.toUpperCase();
-            modalStatus.className = 'status';
-            if (ticket.status === 'pending') modalStatus.classList.add('pending');
-            if (ticket.status === 'confirmed') modalStatus.classList.add('confirmed');
-            if (ticket.status === 'rejected') modalStatus.classList.add('rejected');
-            
-            // Load receipt image
-            modalReceipt.src = '';
-            if (ticket.receiptUrl) {
-                modalReceipt.src = ticket.receiptUrl;
+        
+        // Cerrar modal al hacer clic fuera del contenido
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('paymentModal');
+            if (event.target === modal) {
+                closePaymentModal();
             }
-            
-            // Load user info
-            modalUserName.textContent = 'Cargando...';
-            modalUserEmail.textContent = 'Cargando...';
-            modalUserPhone.textContent = 'Cargando...';
-            
-            if (ticket.userId) {
-                database.ref('users/' + ticket.userId).once('value')
-                    .then((snapshot) => {
-                        const userData = snapshot.val();
-                        if (userData) {
-                            modalUserName.textContent = userData.name || 'N/A';
-                            modalUserEmail.textContent = userData.email || 'N/A';
-                            modalUserPhone.textContent = userData.phone || 'N/A';
-                        } else {
-                            modalUserName.textContent = 'N/A';
-                            modalUserEmail.textContent = 'N/A';
-                            modalUserPhone.textContent = 'N/A';
-                        }
+        });
+        
+        // Smooth scrolling para enlaces internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
                     });
-            } else {
-                modalUserName.textContent = 'N/A';
-                modalUserEmail.textContent = 'N/A';
-                modalUserPhone.textContent = 'N/A';
-            }
-            
-            // Show/hide actions based on status
-            if (ticket.status === 'pending') {
-                modalActions.style.display = 'flex';
-            } else {
-                modalActions.style.display = 'none';
-            }
-            
-            // Show modal
-            ticketModal.style.display = 'flex';
-        }
-
-        // Update ticket status
-        function updateTicketStatus(ticketId, status) {
-            database.ref('tickets/' + ticketId).update({
-                status: status,
-                processedBy: currentUser.uid,
-                processedAt: firebase.database.ServerValue.TIMESTAMP
-            })
-            .then(() => {
-                alert(`Ticket ${status === 'confirmed' ? 'confirmado' : 'rechazado'} con éxito`);
-                ticketModal.style.display = 'none';
-            })
-            .catch((error) => {
-                alert('Error al actualizar el ticket: ' + error.message);
+                }
             });
-        }
-
-        // Update stats
-        function updateStats() {
-            totalTickets.textContent = tickets.length;
-            confirmedTickets.textContent = tickets.filter(t => t.status === 'confirmed').length;
-            pendingTickets.textContent = tickets.filter(t => t.status === 'pending').length;
-            rejectedTickets.textContent = tickets.filter(t => t.status === 'rejected').length;
-        }
-
-        // Run app
-        init();
+        });
     </script>
 </body>
 </html>
+        
+        .
